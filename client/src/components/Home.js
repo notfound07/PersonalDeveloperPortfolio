@@ -6,7 +6,7 @@ import development from '../assets/Website-Development.jpg';
 import deployment from '../assets/Website-Deployment.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDatabase, faServer, faFileLines } from '@fortawesome/free-solid-svg-icons';
-import { faReact, faSquareJs, faNodeJs, faPython, faLinux, faHtml5, faCss3Alt, faFigma, faAws } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faSquareJs, faNodeJs, faPython, faLinux, faHtml5, faCss3Alt, faFigma, faAws, faLinkedin, faXTwitter, faDiscord, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Demo from '../assets/Demo.png';
 import Demo1 from '../assets/Demo1.png';
 import Demo2 from '../assets/Demo2.png';
@@ -424,7 +424,21 @@ const Home = () => {
                 </div>
             </section>
             <footer>
-                <h1>Footer</h1>
+                <div className="footer-box">
+                    <div className="footer-logo">
+                        <img className="logo" src={logo} alt="Logo" />
+                    </div>
+                    <div className="footer-details">
+                        <p className="footer-description">© 2024 Personal Developer Portfolio. All rights reserved.</p>
+                        <div className="footer-icons">
+                            <FontAwesomeIcon icon={faLinkedin} style={{ color: "#1f9eff", }} />
+                            <FontAwesomeIcon icon={faXTwitter} style={{color: "#FFFFFF",}} />
+                            <FontAwesomeIcon icon={faDiscord} style={{color: "#74C0FC",}} />
+                            <FontAwesomeIcon icon={faInstagram} style={{color: "#d9127c",}} />
+                            <FontAwesomeIcon icon={faGithub} style={{color: "#ffffff",}} />
+                        </div>
+                    </div>
+                </div>
             </footer>
         </div>
     );
