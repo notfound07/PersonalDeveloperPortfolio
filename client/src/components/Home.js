@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/logo-w.png";
+import logo from "../assets/logo.png";
 import PDF from '../assets/AmanBhattDev.pdf';
 import figma from '../assets/Figma.jpg';
 import development from '../assets/Website-Development.jpg';
@@ -426,16 +426,17 @@ const Home = () => {
             <footer>
                 <div className="footer-box">
                     <div className="footer-logo">
-                        <img className="logo" src={logo} alt="Logo" />
+                        <img className="logo-footer" src={logo} alt="Logo" />
                     </div>
                     <div className="footer-details">
+                        <div className="footer-change"></div>
                         <p className="footer-description">© 2024 Personal Developer Portfolio. All rights reserved.</p>
                         <div className="footer-icons">
-                            <FontAwesomeIcon icon={faLinkedin} style={{ color: "#1f9eff", }} />
-                            <FontAwesomeIcon icon={faXTwitter} style={{color: "#FFFFFF",}} />
-                            <FontAwesomeIcon icon={faDiscord} style={{color: "#74C0FC",}} />
-                            <FontAwesomeIcon icon={faInstagram} style={{color: "#d9127c",}} />
-                            <FontAwesomeIcon icon={faGithub} style={{color: "#ffffff",}} />
+                            <a href="https://www.linkedin.com/in/aman-bhatt-216443306/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} style={{ color: "#1f9eff", }} /></a>
+                            <a href="https://x.com/?lang=en" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faXTwitter} style={{color: "#FFFFFF",}} /></a>
+                            <a href="https://discord.gg/yxZ9UPBXS2" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faDiscord} style={{color: "#74C0FC",}} /></a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} style={{color: "#d9127c",}} /></a>
+                            <a href="https://github.com/notfound07" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{color: "#ffffff",}} /></a>
                         </div>
                     </div>
                 </div>
