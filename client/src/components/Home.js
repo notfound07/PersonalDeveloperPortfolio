@@ -33,7 +33,6 @@ const Home = () => {
                 const sectionHeight = section.offsetHeight;
                 const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-                // Adjust the condition to be more forgiving for smaller sections
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     currentSection = section.getAttribute("id");
                 }
@@ -47,14 +46,12 @@ const Home = () => {
             });
         };
 
-        // Set the first link as active initially
         if (links.length > 0) {
             links[0].classList.add("active");
         }
 
         window.addEventListener("scroll", setActiveLink);
 
-        // Cleanup event listener on component unmount
         return () => {
             window.removeEventListener("scroll", setActiveLink);
         };
@@ -82,11 +79,9 @@ const Home = () => {
             }
         };
 
-        // Add event listeners for links
         const links = document.querySelectorAll('.nav-link, .nav-button a');
         links.forEach((link) => link.addEventListener('click', handleScroll));
 
-        // Cleanup listeners on component unmount
         return () => {
             links.forEach((link) => link.removeEventListener('click', handleScroll));
         };
@@ -99,6 +94,8 @@ const Home = () => {
     });
 
     const [message, setMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -107,17 +104,21 @@ const Home = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
+        setIsLoading(true);
+    
         try {
             const response = await axios.post('http://localhost:3001/user/sendmail', formData);
             setMessage('Email sent successfully!');
             setTimeout(() => {
                 setMessage('');
             }, 3000);
-            setFormData({ name: '', email: '', question: '' }); // Clear form
+            setFormData({ name: '', email: '', question: '' });
         } catch (error) {
             console.error('Error sending email:', error);
             setMessage('Failed to send email. Please try again.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -416,8 +417,8 @@ const Home = () => {
                             placeholder="Enter your question or feedback"
                             required
                         ></textarea>
-                        <button className="button-contact" type="submit">
-                            Submit
+                        <button className="button-contact" type="submit" disabled={isLoading}>
+                        {isLoading ? <span className="loader"></span> : 'Submit'}
                         </button>
                     </form>
                     <img className="contact-image" src={contact} alt="img"></img>
