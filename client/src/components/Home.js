@@ -115,13 +115,17 @@ const Home = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const baseURL =
+    window.location.hostname === "localhost"
+        ? "http://localhost:3001/user"
+        : `${window.location.protocol}//personalportfolio-server.onrender.com/user`;
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setIsLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:3001/user/sendmail', formData);
+            const response = await axios.post(`${baseURL}/sendmail`, formData);
             setMessage('Email sent successfully!');
             setTimeout(() => {
                 setMessage('');
