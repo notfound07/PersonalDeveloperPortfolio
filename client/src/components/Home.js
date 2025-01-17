@@ -116,9 +116,9 @@ const Home = () => {
     };
 
     const baseURL =
-    window.location.hostname === "localhost"
-        ? "http://localhost:3001/user"
-        : `${window.location.protocol}//personalportfolio-server.onrender.com/user`;
+        window.location.hostname === "localhost"
+            ? "http://localhost:3001/user"
+            : `${window.location.protocol}//personalportfolio-server.onrender.com/user`;
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -475,14 +475,14 @@ const Home = () => {
                     </div>
                     <h3 className="p-info">Personal Info</h3>
                     <p className="footer-info">
-                            <strong className="info">Email : </strong>amanbhatt199916@gmail.com
-                        </p>
-                        <p className="footer-info">
-                            <strong className="info">Phone : </strong>+91 9990106790
-                        </p>
-                        <p className="footer-info">
-                            <strong className="info">Address : </strong>New Delhi, Delhi 110046
-                        </p>
+                        <strong className="info">Email : </strong>amanbhatt199916@gmail.com
+                    </p>
+                    <p className="footer-info">
+                        <strong className="info">Phone : </strong>+91 9990106790
+                    </p>
+                    <p className="footer-info">
+                        <strong className="info">Address : </strong>New Delhi, Delhi 110046
+                    </p>
                     <div className="footer-details">
                         <div className="footer-change"></div>
                         <p className="footer-description">© 2024 Personal Developer Portfolio. All rights reserved.</p>
