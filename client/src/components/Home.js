@@ -5,7 +5,7 @@ import figma from '../assets/Figma.jpg';
 import development from '../assets/Website-Development.jpg';
 import deployment from '../assets/Website-Deployment.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDatabase, faServer, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase, faServer, faFileLines, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faReact, faSquareJs, faNodeJs, faPython, faLinux, faHtml5, faCss3Alt, faFigma, faAws, faLinkedin, faXTwitter, faDiscord, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Demo from '../assets/Demo.png';
 import Demo1 from '../assets/Demo1.png';
@@ -23,6 +23,7 @@ import "./Home.css";
 const Home = () => {
     useEffect(() => {
         const links = document.querySelectorAll(".nav-link");
+        const sides = document.querySelectorAll(".side-link");
         const sections = document.querySelectorAll("section");
 
         const setActiveLink = () => {
@@ -43,11 +44,23 @@ const Home = () => {
                 if (link.getAttribute("href") === `#${currentSection}`) {
                     link.classList.add("active");
                 }
+
+            });
+            sides.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentSection}`) {
+                    link.classList.add("active");
+                }
+
             });
         };
 
         if (links.length > 0) {
             links[0].classList.add("active");
+        }
+
+        if (sides.length > 0) {
+            sides[0].classList.add("active");
         }
 
         window.addEventListener("scroll", setActiveLink);
@@ -68,7 +81,7 @@ const Home = () => {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
-                const offset = 100;
+                const offset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
                 const offsetPosition = elementPosition - offset;
 
@@ -79,7 +92,7 @@ const Home = () => {
             }
         };
 
-        const links = document.querySelectorAll('.nav-link, .nav-button a');
+        const links = document.querySelectorAll('.nav-link, .side-link, .nav-button, .side-button a');
         links.forEach((link) => link.addEventListener('click', handleScroll));
 
         return () => {
@@ -104,9 +117,9 @@ const Home = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         setIsLoading(true);
-    
+
         try {
             const response = await axios.post('http://localhost:3001/user/sendmail', formData);
             setMessage('Email sent successfully!');
@@ -120,6 +133,12 @@ const Home = () => {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleNav = () => {
+        setIsOpen(!isOpen);
     };
 
     return (
@@ -137,6 +156,31 @@ const Home = () => {
                 <div className="nav-button">
                     <a className="button-get" href="#contact">Get in touch</a>
                     <a className="button-hire" href="#hire" >Hire me</a>
+                </div>
+                <div className="hamburger-icon" onClick={toggleNav}>
+                    <FontAwesomeIcon icon={faBars} style={{ color: "#FFFFFF", }} />
+                </div>
+                <div className={`side-nav ${isOpen ? 'open' : ''}`}>
+                    <div className="hamburger-icon" onClick={toggleNav}>
+                        <FontAwesomeIcon icon={faBars} style={{ color: "#636ae8", }} />
+                    </div>
+                    <div className="side-links">
+                        <a className="side-link" href="#home">Home</a>
+                        <a className="side-link" href="#about">About</a>
+                        <a className="side-link" href="#service">Services</a>
+                        <a className="side-link" href="#project">Projects</a>
+                    </div>
+                    <div className="side-button">
+                        <a className="side-hire" href="#hire" >Hire me</a>
+                        <a className="side-get" href="#contact">Get in touch</a>
+                    </div>
+                    <div className="side-icons">
+                        <a href="https://www.linkedin.com/in/aman-bhatt-216443306/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} style={{ color: "#1f9eff", }} /></a>
+                        <a href="https://x.com/?lang=en" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faXTwitter} style={{ color: "#FFFFFF", }} /></a>
+                        <a href="https://discord.gg/yxZ9UPBXS2" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faDiscord} style={{ color: "#74C0FC", }} /></a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} style={{ color: "#d9127c", }} /></a>
+                        <a href="https://github.com/notfound07" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff", }} /></a>
+                    </div>
                 </div>
             </nav>
             <section id="home" className="container-one">
@@ -272,8 +316,6 @@ const Home = () => {
                             <a className="button-code" href="https://github.com/notfound07/ReserveIt" target="_blank" rel="noopener noreferrer">Code</a>
                         </div>
                     </div>
-                </div>
-                <div className="project-box">
                     <div className="projects">
                         <img className="project-image" src={Demo2} alt="img"></img>
                         <h3 className="project-text">BlogHouse - Read And Post Blogs</h3>
@@ -323,8 +365,6 @@ const Home = () => {
                             <a className="button-code" href="https://github.com/notfound07/DevPortfolio" target="_blank" rel="noopener noreferrer">Code</a>
                         </div>
                     </div>
-                </div>
-                <div className="project-box">
                     <div className="projects">
                         <img className="project-image" src={Demo4} alt="img"></img>
                         <h3 className="project-text">Picture-in-Picture</h3>
@@ -418,7 +458,7 @@ const Home = () => {
                             required
                         ></textarea>
                         <button className="button-contact" type="submit" disabled={isLoading}>
-                        {isLoading ? <span className="loader"></span> : 'Submit'}
+                            {isLoading ? <span className="loader"></span> : 'Submit'}
                         </button>
                     </form>
                     <img className="contact-image" src={contact} alt="img"></img>
@@ -429,15 +469,25 @@ const Home = () => {
                     <div className="footer-logo">
                         <img className="logo-footer" src={logo} alt="Logo" />
                     </div>
+                    <h3 className="p-info">Personal Info</h3>
+                    <p className="footer-info">
+                            <strong className="info">Email : </strong>amanbhatt199916@gmail.com
+                        </p>
+                        <p className="footer-info">
+                            <strong className="info">Phone : </strong>+91 9990106790
+                        </p>
+                        <p className="footer-info">
+                            <strong className="info">Address : </strong>New Delhi, Delhi 110046
+                        </p>
                     <div className="footer-details">
                         <div className="footer-change"></div>
                         <p className="footer-description">© 2024 Personal Developer Portfolio. All rights reserved.</p>
                         <div className="footer-icons">
                             <a href="https://www.linkedin.com/in/aman-bhatt-216443306/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} style={{ color: "#1f9eff", }} /></a>
-                            <a href="https://x.com/?lang=en" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faXTwitter} style={{color: "#FFFFFF",}} /></a>
-                            <a href="https://discord.gg/yxZ9UPBXS2" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faDiscord} style={{color: "#74C0FC",}} /></a>
-                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} style={{color: "#d9127c",}} /></a>
-                            <a href="https://github.com/notfound07" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{color: "#ffffff",}} /></a>
+                            <a href="https://x.com/?lang=en" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faXTwitter} style={{ color: "#FFFFFF", }} /></a>
+                            <a href="https://discord.gg/yxZ9UPBXS2" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faDiscord} style={{ color: "#74C0FC", }} /></a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} style={{ color: "#d9127c", }} /></a>
+                            <a href="https://github.com/notfound07" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff", }} /></a>
                         </div>
                     </div>
                 </div>
