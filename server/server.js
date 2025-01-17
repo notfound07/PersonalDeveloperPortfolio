@@ -8,7 +8,7 @@ const connectDB = require('./connection');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors({origin: 'https://personalportfolio-site.onrender.com/'}));
 
 app.use('/user', userRoute);
 
