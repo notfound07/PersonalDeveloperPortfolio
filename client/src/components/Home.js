@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import PDF from '../assets/AmanBhattDev.pdf';
+import PDF from '../assets/AmanBhattDeveloper.pdf';
 import figma from '../assets/Figma.jpg';
 import development from '../assets/Website-Development.jpg';
 import deployment from '../assets/Website-Deployment.jpg';
