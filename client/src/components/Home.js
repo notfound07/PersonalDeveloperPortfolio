@@ -278,8 +278,8 @@ const Home = () => {
                             Other Tools: Git for version control
                         </p>
                         <div className="link-button">
-                            <a className="button-live" href="/#" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                            <a className="button-code" href="/#" target="_blank" rel="noopener noreferrer">Code</a>
+                            <a className="button-live" href="https://personalportfolio-site.onrender.com/" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            <a className="button-code" href="https://github.com/notfound07/PersonalDeveloperPortfolio" target="_blank" rel="noopener noreferrer">Code</a>
                         </div>
                     </div>
                     <div className="projects">
