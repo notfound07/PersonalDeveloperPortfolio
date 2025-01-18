@@ -286,7 +286,7 @@ const Home = () => {
                         <img className="project-image" src={Demo} alt="img"></img>
                         <h3 className="project-text">VisionaryArt Technologies Pvt Ltd - Freelance Project</h3>
                         <p className="project-details">
-                            <strong className="project-date">Duration : </strong>7 Jun 2024 - 6 Feb 2024
+                            <strong className="project-date">Duration : </strong>7 May 2024 - 8 Jan 2024
                         </p>
                         <p className="project-details">
                             <strong className="project-technologies">Technologies Used : </strong> Frontend: HTML, CSS, JavaScript, React.js <br />
